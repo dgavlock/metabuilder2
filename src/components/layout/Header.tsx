@@ -2,13 +2,14 @@
 
 import { useUIStore } from '@/stores/uiStore'
 import { usePlateStore } from '@/stores/plateStore'
-import { Download, Settings, Undo2, Redo2, FlaskConical, HelpCircle } from 'lucide-react'
+import { Download, Settings, Undo2, Redo2, FlaskConical, HelpCircle, MessageSquare } from 'lucide-react'
 import { ModeToggle } from './ModeToggle'
 import Link from 'next/link'
 
 export function Header() {
   const toggleExportDialog = useUIStore((s) => s.toggleExportDialog)
   const toggleSettings = useUIStore((s) => s.toggleSettings)
+  const toggleFeedback = useUIStore((s) => s.toggleFeedback)
   const undo = usePlateStore((s) => s.undo)
   const redo = usePlateStore((s) => s.redo)
 
@@ -54,6 +55,13 @@ export function Header() {
           title="Settings"
         >
           <Settings size={16} />
+        </button>
+        <button
+          onClick={toggleFeedback}
+          className="p-2 rounded hover:bg-[var(--muted)] transition-colors"
+          title="Send Feedback"
+        >
+          <MessageSquare size={16} />
         </button>
         <Link
           href="/help"

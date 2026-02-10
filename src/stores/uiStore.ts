@@ -9,6 +9,7 @@ interface UIStore {
   chatPanelWidth: number
   showSettings: boolean
   showExportDialog: boolean
+  showFeedback: boolean
   zoom: number
 
   setMode: (mode: AppMode) => void
@@ -16,6 +17,7 @@ interface UIStore {
   setChatPanelWidth: (width: number) => void
   toggleSettings: () => void
   toggleExportDialog: () => void
+  toggleFeedback: () => void
   setZoom: (zoom: number) => void
 }
 
@@ -25,6 +27,7 @@ export const useUIStore = create<UIStore>((set) => ({
   chatPanelWidth: 400,
   showSettings: false,
   showExportDialog: false,
+  showFeedback: false,
   zoom: 1,
 
   setMode: (mode) => set({ mode }),
@@ -32,5 +35,6 @@ export const useUIStore = create<UIStore>((set) => ({
   setChatPanelWidth: (width) => set({ chatPanelWidth: width }),
   toggleSettings: () => set((s) => ({ showSettings: !s.showSettings })),
   toggleExportDialog: () => set((s) => ({ showExportDialog: !s.showExportDialog })),
+  toggleFeedback: () => set((s) => ({ showFeedback: !s.showFeedback })),
   setZoom: (zoom) => set({ zoom: Math.max(0.25, Math.min(3, zoom)) }),
 }))

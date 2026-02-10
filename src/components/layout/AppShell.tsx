@@ -6,6 +6,7 @@ import { ChatPanel } from '@/components/chat/ChatPanel'
 import { PlateEditor } from '@/components/plate/PlateEditor'
 import { ExportDialog } from '@/components/export/ExportDialog'
 import { SettingsDialog } from '@/components/layout/SettingsDialog'
+import { FeedbackDialog } from '@/components/feedback/FeedbackDialog'
 import { useRef, useCallback, useState } from 'react'
 
 export function AppShell() {
@@ -14,6 +15,7 @@ export function AppShell() {
   const setChatPanelWidth = useUIStore((s) => s.setChatPanelWidth)
   const showExportDialog = useUIStore((s) => s.showExportDialog)
   const showSettings = useUIStore((s) => s.showSettings)
+  const showFeedback = useUIStore((s) => s.showFeedback)
 
   const [isResizing, setIsResizing] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -61,6 +63,7 @@ export function AppShell() {
       </div>
       {showExportDialog && <ExportDialog />}
       {showSettings && <SettingsDialog />}
+      {showFeedback && <FeedbackDialog />}
     </div>
   )
 }
